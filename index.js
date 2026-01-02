@@ -3,29 +3,10 @@ import nodeCron from "node-cron";
 import dotenv from "dotenv";
 import { publishBlogs, publishNews } from "./worker/worker.js";
 
-
-const  formatTime = (time) => {
-  return {
-    hours: time.getHours(),
-    minutes: time.getMinutes(),
-    seconds: time.getSeconds(),
-  }
-}
 dotenv.config();
 
 const app = express();
 const port = 5000;
-
-nodeCron.schedule("* * * * *", async () => {
-  console.log("⏰ Cron running:", new Date().toLocaleString());
-
-  try {
-    const result = await publishBlogs();
-    console.log("✅ Cron success:", result);
-  } catch (error) {
-    console.error("❌ Cron error:", error.message);
-  }
-});
 
 nodeCron.schedule("* * * * *", async () => {
   console.log(" Cron running:", new Date().toLocaleString());

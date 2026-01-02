@@ -1,7 +1,7 @@
 const apiUrl = process.env.API_BASE_URL;
 
 export async function publishBlogs() {
-  const res = await fetch(apiUrl, {
+  const res = await fetch(`${apiUrl}/blogs`, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${process.env.CRON_JOB_SECRET}`,
@@ -17,7 +17,7 @@ export async function publishBlogs() {
 }
 
 export async function publishNews() {
-  const res = await fetch(apiUrl, {
+  const res = await fetch(`${apiUrl}/news`, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${process.env.CRON_JOB_SECRET}`,
