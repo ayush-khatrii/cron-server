@@ -12,7 +12,7 @@ export async function publishBlogs() {
   });
 
   if (!res.ok) {
-    throw new Error(`Cron failed: ${res.status}`);
+    console.error(res.error);
   }
 
   const data = await res.json();
@@ -28,7 +28,7 @@ export async function publishNews() {
   });
 
   if (!res.ok) {
-    throw new Error(`Cron failed: ${res.status}`);
+    console.error(res.error);
   }
 
   const data = await res.json();
