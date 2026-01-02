@@ -2,14 +2,18 @@ import express from "express";
 import nodeCron from "node-cron";
 import dotenv from "dotenv";
 import { publishBlogs, publishNews } from "./worker/worker.js";
+import { formatDateTime } from "./lib/format.js";
 
 dotenv.config();
 
 const app = express();
 const port = 5000;
 
+const now = new Date();
+
+console.log(`🚀 Now time is => ${formatDateTime(now)}`);
 nodeCron.schedule("* * * * *", async () => {
-  console.log(" Cron running:", new Date().toLocaleString());
+  console.log(`🚀 Cron running at ${formatDateTime(now)}`);
 
   try {
     const newsCron = await publishNews();
