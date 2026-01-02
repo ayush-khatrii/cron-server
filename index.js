@@ -11,7 +11,6 @@ const port = 5000;
 
 const now = new Date();
 
-console.log(`🚀 Now time is => ${formatDateTime(now)}`);
 nodeCron.schedule("* * * * *", async () => {
   console.log(`🚀 Cron running at ${formatDateTime(now)}`);
 
